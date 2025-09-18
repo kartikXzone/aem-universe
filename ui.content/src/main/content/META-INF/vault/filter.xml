@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workspaceFilter version="1.0">
+    <filter root="/conf/universe-project" mode="merge"/>
+    <filter root="/content/universe-project" mode="merge"/>
+    <filter root="/content/dam/universe-project" mode="merge">
+        <exclude pattern="/content/dam/universe-project(/.*)?"/>
+        <include pattern="/content/dam/universe-project/jcr:content(/.*)?"/>
+    </filter>
+    <filter root="/content/dam/universe-project/asset.jpg" mode="merge"/>
+    <filter root="/content/experience-fragments/universe-project" mode="merge"/>
+</workspaceFilter>

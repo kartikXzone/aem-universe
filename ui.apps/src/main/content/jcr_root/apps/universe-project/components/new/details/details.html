@@ -1,0 +1,67 @@
+<sly data-sly-use.model="universe.core.models.DetailsModel" />
+
+<section class="details-page">
+  <h2>List of User Details</h2>
+
+  <ul class="users" data-sly-list.detail="${model.detailsBeanList}">
+    <li class="user-card">
+      <div class="user-name">
+        <p><strong>First Name:</strong> ${detail.firstName}</p>
+        <p><strong>Last Name:</strong> ${detail.lastName}</p>
+      </div>
+
+      <ul class="parents" data-sly-list.parent="${detail.parentDetailsBeanList}">
+        <li class="parent">
+          <p><strong>Father Name:</strong> ${parent.fatherName}</p>
+          <p><strong>Mother Name:</strong> ${parent.motherName}</p>
+
+          <ul class="addresses" data-sly-list.address="${parent.addressBeanList}">
+            <li class="address">
+              <p><strong>State:</strong> ${address.fullAddress}</p>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
+
+
+
+
+<!-- Nested Multifield - HTL only -->
+
+<!-- <div data-sly-list.selfDetails="${resource.getChildren}">
+    <div data-sly-test="${selfDetails.name == 'selfDetails'}">
+
+         Loop through all items in selfDetails -->
+        <!-- <div data-sly-list.person="${selfDetails.getChildren}">
+            <h2>First Name: ${person.firstName}</h2>
+            <h2>Last Name: ${person.lastName}</h2> -->
+
+            <!-- Loop parentsDetail -->
+            <!-- <div data-sly-list.parents="${person.getChildren}">
+                <div data-sly-test="${parents.name == 'parentsDetail'}">
+                    <div data-sly-list.parentItem="${parents.getChildren}">
+                        <p>Father Name: ${parentItem.fatherName}</p>
+                        <p>Mother Name: ${parentItem.motherName}</p> -->
+
+                        <!-- Loop address -->
+                        <!-- <div data-sly-list.addressBlock="${parentItem.getChildren}">
+                            <div data-sly-test="${addressBlock.name == 'address'}">
+                                <div data-sly-list.address="${addressBlock.getChildren}">
+                                    <p>State: ${address.state}</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div> --> 
+
+

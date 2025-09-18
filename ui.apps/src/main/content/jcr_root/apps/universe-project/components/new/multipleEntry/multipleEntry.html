@@ -1,0 +1,18 @@
+<div class="card">
+  <div class="container">
+    <h4>${properties.title}</h4>
+    <div data-sly-resource="${'container' @ resourceType='core/wcm/components/container/v1/container'}"
+    data-placeholder-text="${'Please drag components here' @ i18n}" >
+    </div>
+
+    <!-- inner component count checking -->
+    <div data-sly-use.model="universe.core.models.MultipleEntryComponentModel">
+      <h3>Total Inner Components: ${model.componentCount}</h3>
+      
+      <ul>
+        <li data-sly-list.type="${model.arrayList}">
+          Component's sling:resourceType property: "${type}" <br>
+        </li>
+      </ul>
+  </div>
+</div>

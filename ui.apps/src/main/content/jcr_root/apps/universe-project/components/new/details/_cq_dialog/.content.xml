@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Details"
+    sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">
+        <items jcr:primaryType="nt:unstructured">
+            <column
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/container">
+                <items jcr:primaryType="nt:unstructured">
+                    <selfDetails
+                        granite:class="foundation-toggleable cmp-teaser__editor-multifield_actions"
+                        jcr:description="Shows self details"
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                        composite="{Boolean}true"
+                        fieldLabel="Self Details">
+                        <field
+                            granite:class="cmp-teaser__editor-action"
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/coral/foundation/container"
+                            name="./selfDetails">
+                            <items jcr:primaryType="nt:unstructured">
+                                <firstName
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="First Name"
+                                    name="./firstName"/>
+                                <lastName
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                    fieldLabel="Last Name"
+                                    name="./lastName"/>
+                                <parentsDetail
+                                    granite:class="foundation-toggleable cmp-teaser__editor-multifield_actions"
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                    composite="{Boolean}true"
+                                    fieldLabel="Parents Detail">
+                                    <field
+                                        granite:class="cmp-teaser__editor-action"
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                                        name="./parentsDetail">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <fatherName
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Father Name"
+                                                name="./fatherName"/>
+                                            <motherName
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Mother Name"
+                                                name="./motherName"/>
+                                            <address
+                                                granite:class="foundation-toggleable cmp-teaser__editor-multifield_actions"
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                                composite="{Boolean}true"
+                                                fieldLabel="Address">
+                                                <field
+                                                    granite:class="cmp-teaser__editor-action"
+                                                    jcr:primaryType="nt:unstructured"
+                                                    sling:resourceType="granite/ui/components/coral/foundation/container"
+                                                    name="./address">
+                                                    <items jcr:primaryType="nt:unstructured">
+                                                        <fullAddress
+                                                            jcr:primaryType="nt:unstructured"
+                                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                            fieldLabel="Address"
+                                                            filedDescription="Enter full address"
+                                                            name="./fullAddress"/>
+                                                    </items>
+                                                </field>
+                                            </address>
+                                        </items>
+                                    </field>
+                                </parentsDetail>
+                            </items>
+                        </field>
+                    </selfDetails>
+                    <id
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                        fieldLabel="ID"
+                        name="./id"/>
+                </items>
+            </column>
+        </items>
+    </content>
+</jcr:root>

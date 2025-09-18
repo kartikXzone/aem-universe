@@ -1,0 +1,7 @@
+<div data-sly-use.model="universe.core.models.SearchBarModel">
+    <p> Search results for: <b>${model.search}</b></p>
+
+    <ul data-sly-list.result="${model.resultList}">
+        <li><a href="${result.pagePath}">${result.pageTitle}</a></li>
+    </ul>
+</div>

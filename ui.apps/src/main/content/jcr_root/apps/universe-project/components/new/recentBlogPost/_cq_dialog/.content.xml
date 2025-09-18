@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Recent Blog Post"
+    sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns">
+        <items jcr:primaryType="nt:unstructured">
+            <column
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/container">
+                <items jcr:primaryType="nt:unstructured">
+                    <blogPath
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="cq/gui/components/coral/common/form/pagefield"
+                        fieldDescription="Enter the page path to be queried."
+                        fieldLabel="Blog Page Path"
+                        name="./blogPath"/>
+                    <blogTag
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="cq/gui/components/coral/common/form/tagfield"
+                        fieldDescription="Select the tag"
+                        fieldLabel="Blog Tag"
+                        name="./blogTag"/>
+                    <blogText
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                        fieldDescription="Enter text for redirecting to the page path."
+                        fieldLabel="Blog Text (Read Article)"
+                        name="./blogText"/>
+                    <id
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                        fieldDescription="HTML attribute"
+                        fieldLabel="ID"
+                        name="./id"/>
+                </items>
+            </column>
+        </items>
+    </content>
+</jcr:root>

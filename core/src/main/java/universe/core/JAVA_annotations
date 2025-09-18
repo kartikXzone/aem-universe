@@ -1,0 +1,166 @@
+
+-> '@Model*(org.apache.sling.model.annotations)' annotation is used to convert the basic java class into the sling model 
+	 ex: @Model(adaptables = Resource.class, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+
+
+->  adaptables - resource types to which the model can be adapted. A Model can be adapted to both Resource and SlingHttpServletRequest.
+
+
+-> adapters – adapters to which the model can be adapted
+	ex: @Model(adaptables = Resource.class, adapters=ContactUsModel, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+	
+	
+-> '@ValueMapValue' annotation injects the properties from the JCR dialog to the model.
+	The ValueMap is an easy way to access the properties of a resource.
+
+
+-> '@Inject' -> fields that are needed to be injected in the sling model.
+
+
+-> '@Named' annotation is used to inject property like sling:resourceType.
+-	If the field name differs from the property name, consider using the @Named annotation
+	ex: 
+@ValueMapValue @Named("jcr:title")
+private String title;
+
+
+-> '@PostConstruct' annotation is used on a method that runs after injecting all of the properties to perform any initialization and we then write the logic part in this annotation
+- It is the same as JAVA main method.
+
+
+-> '@Optional, @Required, @Default(values=....)' ; these annotations are used according to the requirement.
+
+	ex: 
+@Model(adaptables = SlingHttpServletRequest.class, adapters=ContactUsModel, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+public class ContactUsModelImpl implements ContactUsModel{
+        @ValueMapValue
+	private String mailAddress;
+        @ValueMapValue
+        @Required
+	private String phoneNumber;
+
+
+-> '@ChildResource' annotations is used to inject child resource by its name.
+ex:
+@Model(adaptables = Resource.class, adapters=ContactUsModel, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+public class ContactUsModelImpl implements ContactUsModel{
+       @ChildResource (name="mailAddress")
+       private Resource child_node_of_current_resource;  // Fetches a child resource named "mailAddress"
+       @ChildResource
+       private List<Resource> emailAddress;  // Fetches multiple child resources under "emailAddress" child Node 
+        
+		
+-> '@ScriptVariable' annotation is used to inject any sightly global objects into the sling model.
+  ex. component, currentNode, currentPage, pageManager, etc.....
+ this annotation can only be used with adaptables as "SlingHTTPServletRequest", 
+ otherwise it will show NullPointerException.
+ex:
+@Model(adaptables = SlingHttpServletRequest.class, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+public class ContactUsModelImpl implements ContactUsModel{
+    @ScriptVariable
+    private Component component;
+    @ScriptVariable
+    private ComponentContext componentContext;
+    @ScriptVariable
+    private Design currentDesign;
+}
+	
+
+-> "@SlingObject" annotation is used to inject the sling objects in sling model.
+The supported Sling objects include SlingHttpServletRequest, SlingHttpServletResponse, Resource, ResourceResolver, and SlingScriptHelper.
+ex:
+@Model(adaptables = Resource.class, adapters=ContactUsModel, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+public class ContactUsModelImpl implements ContactUsModel{
+       @SlingObject
+       private SlingHttpServletRequest slingHttpServletRequest;  // Injects the request
+       @SlingObject
+       private SlingHttpServletResponse slingHttpServletResponse;  // Injects the response
+       @SlingObject
+       private Resource currentResource;  // Injects the current resource
+       @SlingObject
+       private ResourceResolver resourceResolver;  // Injects the resource resolver
+   }
+   
+
+-> "@Self" ; Injects the adaptable object itself . This annotation is used to get the adaptable object.
+ex:
+ @Self
+    protected Resource resource;
+	
+
+-> '@Via' ; In some cases, a different object should be used as the adaptable instead of the original adaptable. 
+This can be done using the @Via annotation.
+ex:  @Inject @Via(value = "jcr:content", type = ChildResource.class)
+
+
+-> "@RequestAttribute" annotation is used to inject any request attribute from the sightly.
+ while using the sling model, if we want to pass some parameters from the sightly to the sling model, then we can use this annotation.
+ ex:
+ @Model(adaptables = SlingHttpServletRequest.class, adapters=ContactUsModel, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+public class ContactUsModelImpl implements ContactUsModel{
+       @RequestAttribute(name = "area")
+       private String areaParam;  // Injects a request attribute named "area"
+
+ 
+=> @Component:
+ it marks the Java class as an OSGi Component as well as registers it as an OSGi Service.
+ Only @Component annotation is not sufficient to implement the OSGI service so
+ it is recommended to implement an interface.
+
+
+=> @Reference:
+ It also allows the dependencies injection of other OSGi services using the '@Reference' annotation.
+
+
+=>  @ProviderType:
+ this annotation defines that the only implementation in this bundle will only implement this interface(is bundle me jo bhi implementation hogi vo bs us interface ko implement kregi) 
+
+
+=> @ConsumerType:
+ this annotation means that we are expecting that the other OSGI bundle have it's own OSGI implementation which will implement the OSGI service interface.
+
+
+=> @Version("....."):
+ this annotation defines the version of the package.
+
+
+=> '@OSGiService' :
+ this annotation is used to let Sling Models inject an OSGi service.
+ex:
+@Model(adaptables = SlingHttpServletRequest.class, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+public class ContactUsModelImpl implements ContactUsModel {
+    // Inject an OSGi service of type SomeService
+    @OSGiService
+    private SomeService someService;
+}
+
+ 
+=> '@ObjectClassDefinition' :
+ this annotation provide the UI for the configuration.
+
+ 
+=> @Designate(ocd=_______):
+To use the configuration interface within our OSGI service component, we need this annotation.
+ ex. @Designate(ocd = Cars.configurationName.class)
+
+ 
+=> @AttributeDefinition 
+ this annotation accepts some parameters where we are implementing this annotation.
+
+ 
+=> @SlingServletResourceTypes :
+  this annotation takes care of writing the service properties which is used by SlingServletResolver to register the annoted servlet component as servlet for specific resource type.
+  
+  
+=>  @ResourcePath
+The annotation is used to inject one or multiple resources.
+ex:
+@Model(adaptables = Resource.class, adapters=ContactUsModel, defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
+public class ContactUsModelImpl implements ContactUsModel{
+       @ResourcePath(path = "/content/sourcedcode/en/home")
+       Resource techrevelHomeRes;
+}
+
+
+
+

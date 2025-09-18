@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workspaceFilter version="1.0">
+    <filter root="/apps/universe-project/clientlibs"/>
+    <filter root="/apps/universe-project/components"/>
+    <filter root="/apps/universe-project/i18n"/>
+</workspaceFilter>

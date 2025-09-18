@@ -1,0 +1,14 @@
+<div data-sly-use.model="universe.core.models.RecentBlogPostModel" >
+    
+    <div class="recent-blogs" data-sly-list.itemList="${model.recentBlogPostList}">
+        <div class="blog-item">
+            <h3 class="blog-title"> <p>Page title: ${itemList.pageTitle}</p> </h3>
+            <p class="blog-description"> <p>Page description: ${itemList.pageDescription}</p> </p>
+            <p class="blog-tag">
+                <p>Page Tag: ${itemList.pageTags}</p>
+            </p>
+            <img src="${itemList.thumbnailImage}" alt="${itemList.pageTitle}" width="800" height="auto">
+            <p><a href="${itemList.pageLink @ extension='html'}">${properties.blogText} </a></p>
+        </div>
+    </div>
+</div>

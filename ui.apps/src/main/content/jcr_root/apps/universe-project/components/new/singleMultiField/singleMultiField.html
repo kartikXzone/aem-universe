@@ -1,0 +1,7 @@
+<sly data-sly-use.detailsModel="universe.core.models.newMultiField" />
+
+<!-- Loop through the list of DetailsBean -->
+<div data-sly-list.first="${detailsModel.singleMultiField}">
+    <p> ${first.fullName}</p>
+
+</div>
