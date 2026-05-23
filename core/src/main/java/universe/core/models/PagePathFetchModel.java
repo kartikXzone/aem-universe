@@ -46,7 +46,6 @@ public class PagePathFetchModel {
                         String childItemTitle = childItem.getTitle();
                         log.debug("page title: {}", childItemTitle);
                         if (childItemTitle != null && childItemTitle.contains(keyword)) {
-                            log.debug("before adding values into list");
                             stringList.add(childItem.getPath());
                             log.debug("After adding values into list: {}", stringList);
                         }

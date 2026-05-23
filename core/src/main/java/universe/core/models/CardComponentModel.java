@@ -1,12 +1,18 @@
 package universe.core.models;
 
+import com.day.cq.wcm.api.PageManager;
 import lombok.Getter;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
+import org.apache.sling.api.resource.ValueMap;
+import org.apache.sling.models.annotations.Default;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
 
+import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
 import org.apache.sling.models.annotations.injectorspecific.SlingObject;
+import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 import org.bson.codecs.IdGenerator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,36 +30,37 @@ public class CardComponentModel {
 
     private static final Logger log = LoggerFactory.getLogger(CardComponentModel.class);
 
-    @Getter
-    @Inject
-    private Integer id;
+    @ScriptVariable
+    ValueMap pageProperties;
 
-    @Inject
+    @Getter
+    @ValueMapValue
+    @Default(values = "0000")
+    private int id;
+
+    @Getter
+    @ValueMapValue
+    @Default(values = "name")
     private String name;
 
-    @Inject
+    @Getter
+    @ValueMapValue
     private String gender;
 
-    @Inject
+    @Getter
+    @ValueMapValue
     private String address;
 
     @Getter
-    private String detailsResult;
+    String pageValue;
 
     @PostConstruct
     protected void init() {
 
-        log.debug("first logger - model is working fine");
+        name = !name.isEmpty() ? name.toUpperCase() : StringUtils.EMPTY;
+        gender = !gender.isEmpty() ? gender.toLowerCase() : StringUtils.EMPTY;
+        address = !address.isEmpty() ? address.toLowerCase() : StringUtils.EMPTY;
+        pageValue = pageProperties.get("jcr:title", StringUtils.EMPTY);
 
-        if (id == null) {
-            Random random = new Random();
-            id = random.nextInt();
-        }
-
-        detailsResult = (name != null ? "Name: " + name : " please provide the name ") +
-                (gender != null ? ", Gender: " + gender : " please provide the gender ") +
-                (address != null ? ", Address: " + address : " please provide the address ");
-
-        log.debug("details result: {}", detailsResult);
     }
 }

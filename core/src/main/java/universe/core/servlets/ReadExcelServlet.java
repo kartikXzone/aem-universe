@@ -9,6 +9,7 @@ import org.apache.sling.api.SlingHttpServletResponse;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.resource.ResourceResolver;
 import org.apache.sling.api.servlets.SlingAllMethodsServlet;
+import org.apache.sling.api.servlets.SlingSafeMethodsServlet;
 import org.osgi.service.component.annotations.Component;
 import javax.servlet.Servlet;
 import javax.servlet.ServletException;
@@ -22,7 +23,7 @@ import java.util.*;
                 "sling.servlet.paths=/bin/universe/readExcel",
                 "sling.servlet.methods=GET",})
 
-public class ReadExcelServlet extends SlingAllMethodsServlet {
+public class ReadExcelServlet extends SlingSafeMethodsServlet {
 
     @Override
     public void doGet(SlingHttpServletRequest request, SlingHttpServletResponse response)

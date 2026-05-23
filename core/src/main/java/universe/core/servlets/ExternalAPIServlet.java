@@ -10,7 +10,8 @@ import javax.servlet.Servlet;
 import javax.servlet.ServletException;
 import java.io.IOException;
 
-@Component(service = Servlet.class, property = {
+@Component(service = Servlet.class,
+        property = {
         "sling.servlet.methods=GET",
         "sling.servlet.paths=/bin/universe/weatherAPI"
 })

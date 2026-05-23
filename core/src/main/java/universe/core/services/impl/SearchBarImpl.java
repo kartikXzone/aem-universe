@@ -24,7 +24,6 @@ public class SearchBarImpl implements SearchBarInterface {
     private QueryBuilder queryBuilder;
 
     final String DEFAULT_PATH = "cq:Page";
-    final String TEMPLATE_PATH = "/conf/universe-project/settings/wcm/templates/planets";
 
     @Override
     public List<SearchBarPOJO> getSearchResult(String pagePath, String pageTitle, String searchTerm, ResourceResolver resourceResolver) {
@@ -41,7 +40,6 @@ public class SearchBarImpl implements SearchBarInterface {
             predicates.put("type", DEFAULT_PATH);
             predicates.put("path", pagePath);
             predicates.put("1_property", "jcr:content/cq:template");
-            predicates.put("1_property.value", TEMPLATE_PATH);
 
             Query query = queryBuilder.createQuery(PredicateGroup.create(predicates), session);
             SearchResult result = query.getResult();

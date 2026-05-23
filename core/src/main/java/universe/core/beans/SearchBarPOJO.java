@@ -16,11 +16,4 @@ public class SearchBarPOJO {
         this.pageTitle = pageTitle;
     }
 
-    public String getPagePath() {
-        return pagePath;
-    }
-
-    public String getPageTitle() {
-        return pageTitle;
-    }
 }

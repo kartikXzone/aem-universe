@@ -20,9 +20,10 @@ import javax.jcr.Session;
 import javax.servlet.Servlet;
 import javax.servlet.ServletException;
 import java.io.IOException;
+import java.io.Serial;
 import java.util.*;
 
-@Component(service = {Servlet.class},
+@Component(service = Servlet.class,
         property = {
                 "sling.servlet.paths=/bin/universe/query",
                 "sling.servlet.methods=GET"})
@@ -35,6 +36,7 @@ public class QueryBuilderServlet extends SlingSafeMethodsServlet {
     private List<String> list;
     private final String DEFAULT_PATH = "/content/universe-project/us/en/centre-page";
 
+    @Serial
     private static final long serialVersionUID = 1L;
 
     public void doGet(final SlingHttpServletRequest request, final SlingHttpServletResponse response)

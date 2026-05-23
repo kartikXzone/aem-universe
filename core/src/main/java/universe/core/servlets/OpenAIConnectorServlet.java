@@ -12,7 +12,6 @@ import universe.core.services.OpenAIConnector;
 import javax.servlet.Servlet;
 import javax.servlet.ServletException;
 import java.io.IOException;
-import java.io.Serial;
 
 @Component(service = Servlet.class,
         property = {"sling.servlet.methods=GET",
@@ -21,7 +20,6 @@ import java.io.Serial;
 
 public class OpenAIConnectorServlet extends SlingAllMethodsServlet {
 
-    @Serial
     private static final long serialVersionUID = 1L;
     private static final Logger log = LoggerFactory.getLogger(OpenAIConnectorServlet.class);
 
